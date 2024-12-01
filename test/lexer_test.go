@@ -16,6 +16,19 @@ func TestNextToken(t *testing.T) {
 		x+y;
 	}
 	let result = add(five, ten);
+	!-*/;
+	5<10>6;
+	if(5<10)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+	
+	10 == 10;
+	10!=5;
 	`
 
 	tests := []struct {
@@ -56,6 +69,42 @@ func TestNextToken(t *testing.T) {
 		{token.COMMA, ","},
 		{token.IDENT, "ten"},
 		{token.RPAREN, ")"},
+		{token.SEMICOLON, ";"},
+		{token.BANG, "!"},
+		{token.MINUS, "-"},
+		{token.ASTERISK, "*"},
+		{token.SLASH, "/"},
+		{token.SEMICOLON, ";"},
+		{token.INT, "5"},
+		{token.LT, "<"},
+		{token.INT, "10"},
+		{token.GT, ">"},
+		{token.INT, "6"},
+		{token.SEMICOLON, ";"},
+		{token.IF, "if"},
+		{token.LPAREN, "("},
+		{token.INT, "5"},
+		{token.LT, "<"},
+		{token.INT, "10"},
+		{token.RPAREN, ")"},
+		{token.LBRACES, "{"},
+		{token.RETURN, "return"},
+		{token.TRUE, "true"},
+		{token.SEMICOLON, ";"},
+		{token.RBRACES, "}"},
+		{token.ELSE, "else"},
+		{token.LBRACES, "{"},
+		{token.RETURN, "return"},
+		{token.FALSE, "false"},
+		{token.SEMICOLON, ";"},
+		{token.RBRACES, "}"},
+		{token.INT, "10"},
+		{token.EQ, "=="},
+		{token.INT, "10"},
+		{token.SEMICOLON, ";"},
+		{token.INT, "10"},
+		{token.NE, "!="},
+		{token.INT, "5"},
 		{token.SEMICOLON, ";"},
 		{token.EOF, ""},
 	}
